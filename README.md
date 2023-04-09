@@ -8,7 +8,9 @@ A console helper. Run cgpt.sh, tell the prompt what you want to do, and it will 
     Prompt: Print the largest files on my system and how big they are.
     0. Exit
     1. sudo du -ah /. | sort -rh | head -n 20
-    2. None of these work. I need to provide more context.
+    2. sudo find / -type f -printf "%s %p\n" | sort -nr | head -n 10
+    3. sudo ls -lR / | sort -k 5 -rn | head -n 10
+    4. None of these work. I need to provide more context.
     Choice: 
 
 When you chose a command, it will execute it for you.

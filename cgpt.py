@@ -6,6 +6,21 @@ API_KEY = os.environ.get("OPENAI_API_KEY")
 openai.api_key = API_KEY
 
 examples = """
+prompt: What is using port 5050?
+netstat -ano | findstr :5050
+lsof -i :5050
+Get-Process -Id (Get-NetTCPConnection -LocalPort 5050).OwningProcess
+
+prompt: Find a file named myfile.txt
+find / -name myfile.txt
+locate myfile.txt
+grep -r "myfile.txt" /
+
+prompt: Show me disk space usage
+df -h
+du -sh /
+ncdu /
+
 prompt: Print each line in the file at the specified path for which the value of the first field has been seen more than once.
 awk 'seen[$1]++ {print $1}' path/to/list.txt
 

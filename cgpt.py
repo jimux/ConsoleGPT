@@ -5,6 +5,23 @@ import os
 API_KEY = os.environ.get("OPENAI_API_KEY")
 openai.api_key = API_KEY
 
+examples = """
+prompt: Print each line in the file at the specified path for which the value of the first field has been seen more than once.
+awk 'seen[$1]++ {print $1}' path/to/list.txt
+
+prompt: Restart the Docker service.
+systemctl restart docker.service
+
+prompt: Generate an ed25519 SSH key pair.
+ssh-keygen -t ed25519
+
+prompt: Delete all files in the current directory or subdirectories that contain an underscore in their filename.
+find . -type f -regex \".*_.*\" | xargs rm -f
+
+prompt: list all the existing connections using port 22
+netstat -nt | grep :22
+"""
+
 def select_option(options):
     while True:
         # Enumerate and display the strings
@@ -81,7 +98,7 @@ def main():
 
     while True:
         messages = [
-            {"role": "system", "content": "You are ConsoleGPT, a command line terminal user assistant. You respond only with console commands."},
+            {"role": "system", "content": f"You are ConsoleGPT, a command line terminal user assistant. You take descriptions of things to do and respond only with console commands. Examples:\n{examples}"},
             {"role": "system", "content": f"System information context: {args.context}"},
         ]
 

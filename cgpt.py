@@ -13,8 +13,7 @@ def select_option(options):
             print(f"{index}. {string}")
         print(f"{len(options) + 1}. None of these work. I need to provide more context.")
         
-        # Simulate user input
-        user_input = input("Prompt: ")
+        user_input = input("Choice: ")
         
         if user_input == '':
             # Default to the first option if no input is given
@@ -62,6 +61,14 @@ def generate_response(messages):
     )
 
     return response.choices[0].message['content']
+
+def finetuned_response(prompt):
+    response = openai.Completion.create(
+        engine="curie:ft-personal-2023-04-09-00-11-21",
+        prompt=prompt,
+        max_tokens=75
+    )
+    return response.choices[0].text
 
 def main():
     parser = argparse.ArgumentParser(description='A command line helper.')

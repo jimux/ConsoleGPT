@@ -61,6 +61,6 @@ fi
 python cgpt.py --tempfile "$tempfile" --context "$output"
 
 selected_command=$(<$tempfile)
-
-echo "The captured user feedback is: $selected_command"
 rm $tempfile
+
+eval $selected_command

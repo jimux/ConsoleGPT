@@ -1,5 +1,7 @@
 # ConsoleGPT
 
+Requires OPENAI_API_KEY environment variable to have been set.
+
 A console helper. Run cgpt.sh, tell the prompt what you want to do, and it will present commands to run. It will first gather various system information (OS, distro, basic 
 configuration stuff) and includes it in the context to get responses relevant to the user's system.
 

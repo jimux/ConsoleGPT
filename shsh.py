@@ -155,7 +155,7 @@ def main():
         else:
             break
 
-    print("Selected command: " + selection)
+    #print("Selected command: " + selection)
     with open(args.tempfile, "w") as file:
         file.write(selection)
 

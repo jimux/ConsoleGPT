@@ -62,7 +62,7 @@ fi
 # Pass the output to another script
 python shsh.py --tempfile "$tempfile" --prompt "$prompt" --context "$output"
 
-selected_command=$(<$tempfile)
+selected_command=$(cat "$tempfile")
 rm $tempfile
 
 eval $selected_command

@@ -44,9 +44,9 @@ def select_option(options):
         for index, string in enumerate(options, start=1):
             print(f"{index}. {string}")
         print(f"{len(options) + 1}. None of these work. I need to provide more context.")
-        
+
         user_input = input("Choice: ")
-        
+
         if user_input == '':
             # Default to the first option if no input is given
             selected_index = 1
@@ -67,7 +67,7 @@ def select_option(options):
             except ValueError:
                 # If the input is invalid, inform the user and prompt to try again
                 print("Invalid selection. Please try again.")
-    
+
     # Return the selected string
     return options[selected_index - 1]
 
@@ -112,7 +112,7 @@ def generate_using_bart(prompt):
     return tokenizer.decode(output[0], skip_special_tokens=True)
 
 def main():
-    parser = argparse.ArgumentParser(description='A command line helper.')
+    parser = argparse.ArgumentParser(description='A command line guide.')
     parser.add_argument("--tempfile", type=str, required=True, help="Delimiter string to mark the relevant output.")
     parser.add_argument("--context", type=str, help='System info context')
     parser.add_argument("--prompt", type=str, help='Prompt to use for the command')

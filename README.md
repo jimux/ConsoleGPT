@@ -4,7 +4,7 @@ Requires OPENAI_API_KEY environment variable to have been set.
 
 A console helper. Run shsh.sh, tell the prompt what you want to do, and it will present commands to run. It will first gather various system information (OS, distro, basic configuration stuff) and includes it in the context to get responses relevant to the user's system.
 
-    % cgpt
+    % shsh
     Prompt: Print the largest files on my system and how big they are.
     0. Exit
     1. sudo du -ah /. | sort -rh | head -n 20

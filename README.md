@@ -18,3 +18,20 @@ When you chose a command, it will execute it for you.
 Command generation works well enough most of the time. But try as I might, davinci is having difficulty following orders to only produce the commands themselves and sometimes will include descriptions or enumerate resonses in a way to disrupts being able to run them. Right now generation involves a convoluted prompt preparation, and futher efforts should be focused more on a fine-tuned model to generate more predictable output.
 
 Future work should try to fine-tune a model that can be run locally. GPT-J, Llama, OPT, or other. Whichever is more suitable.
+Models to consider:
+BERT family:
+* BERT
+* RoBERTa
+* ELECTRA
+* ALBERT
+* DistilBERT
+* CodeBERT
+
+Not BERTs:
+* XLNet
+* T5
+* BART
+
+Fake models that GPT-3.5 insists very strongly are real and GPT4 says are not:
+* ShellNet by Facebook AI Research
+* ShBERT by Allen Insitute for AI

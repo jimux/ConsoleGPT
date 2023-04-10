@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+prompt="$*"
+
 # Define functions for macOS and Linux commands
 macos_commands() {
     printf "Hostname:%s\nUser:%s\n" "$(hostname)" "$(whoami)"
@@ -58,7 +60,7 @@ else
 fi
 
 # Pass the output to another script
-python cgpt.py --tempfile "$tempfile" --context "$output"
+python cgpt.py --tempfile "$tempfile" --prompt "$prompt" --context "$output"
 
 selected_command=$(<$tempfile)
 rm $tempfile

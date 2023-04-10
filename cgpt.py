@@ -102,10 +102,20 @@ def finetuned_response(prompt):
     )
     return response.choices[0].text
 
+def generate_using_bart(prompt):
+    from transformers import BartForConditionalGeneration, BartTokenizer
+    model_name = "facebook/bart-large"  # or another pre-trained BART model
+    model = BartForConditionalGeneration.from_pretrained(model_name)
+    tokenizer = BartTokenizer.from_pretrained(model_name)
+    input_tokens = tokenizer.encode(prompt, return_tensors="pt")
+    output = model.generate(input_tokens)
+    return tokenizer.decode(output[0], skip_special_tokens=True)
+
 def main():
     parser = argparse.ArgumentParser(description='A command line helper.')
     parser.add_argument("--tempfile", type=str, required=True, help="Delimiter string to mark the relevant output.")
     parser.add_argument("--context", type=str, help='System info context')
+    parser.add_argument("--prompt", type=str, help='Prompt to use for the command')
     args = parser.parse_args()
 
     prompts = []
@@ -121,11 +131,15 @@ def main():
             messages.append({"role": "user", "content": prompts[index]})
             messages.append({"role": "system", "content": command_responses[index]})
 
-        user_prompt = input("Prompt: ")
+        if args.prompt:
+            user_prompt = args.prompt
+        else:
+            user_prompt = input("Prompt: ")
         messages.append({"role": "user", "content": user_prompt})
         messages.append({"role": "system", "content": "Remember, only answer with console commands. Do not enumerate them, describe them, or provide any context. Only give commands. If there are several suggestions, put them on separate lines. Again, only the commands themselves. No context. No enumerations. Don't surround with quotes. Just the commands."})
 
         response = generate_response(messages)
+        #response = generate_using_bart(user_prompt)
         response = response.replace("\\n", "\n")
 
         command_responses.append(response)

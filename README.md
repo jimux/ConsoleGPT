@@ -15,6 +15,6 @@ A console helper. Run shsh.sh, tell the prompt what you want to do, and it will 
 
 When you chose a command, it will execute it for you.
 
-Command generation works well enough most of the time. But try as I might, davinci is having difficulty following orders to only produce the commands themselves and sometimes will include descriptions or enumerate resonses in a way to disrupts being able to run them. Right now generation involves a convoluted prompt preparation, and futher efforts should be focused more on a fine-tuned model to generate more predictable output.
+Command generation works well enough most of the time. But try as I might, davinci is having difficulty following orders to only produce the commands themselves and sometimes will include descriptions or enumerate responses in a way to disrupts being able to run them. Right now generation involves a convoluted prompt preparation, and futher efforts should be focused more on a fine-tuned model to generate more predictable output.
 
 Future work should try to fine-tune a model that can be run locally. GPT-J, Llama, OPT, or other. Whichever is more suitable.
